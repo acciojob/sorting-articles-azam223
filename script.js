@@ -1,16 +1,16 @@
-//your JS code here. If required.
-//your JS code here. If required.
-const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled'];
 
-function strip(bandName) {
-    return bandName.replace(/^(a |the |an )/i, '').trim();
+function stripArticle(title) {
+    // Remove "a", "an", and "the" from the beginning of the title
+    return title.replace(/^(a |an |the )/i, '').trim();
 }
 
-const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+const sortedBands = bands.slice().sort((a, b) => stripArticle(a) > stripArticle(b) ? 1 : -1);
 
 const bandList = document.getElementById('band');
+
 sortedBands.forEach(band => {
-    const li = document.createElement('li');
-    li.textContent = band;
-    bandList.appendChild(li);
+    const listItem = document.createElement('li');
+    listItem.textContent = band;
+    bandList.appendChild(listItem);
 });
